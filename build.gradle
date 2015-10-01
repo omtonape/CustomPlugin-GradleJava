@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+buildscript {
+repositories {
+         mavenLocal()
+         mavenCentral()
+    }
+    dependencies {
+   		classpath "com.sample.gradle:CustomGradlePlugin:1.0.0"
+    }
+}
+apply plugin: 'sample-plugin'
+ task sampleTask(type: com.sample.gradle.SampleTask) {
+  samplePlugin.sampleFilePath = "$sampleFilePath"
+} 

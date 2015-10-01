@@ -1,0 +1,32 @@
+apply plugin: 'java'
+dependencies {
+    compile gradleApi()
+}
+apply plugin: 'maven-publish'
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-simple:1.6.1'
+    testCompile 'junit:junit:4.11'
+}
+group = 'com.sample.gradle'
+version = '1.0.0'
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId "$group"
+			artifactId 'CustomGradlePlugin'
+			version "$version"
+			from components.java
+		}
+	}
+}
+uploadArchives {
+    repositories {
+            mavenLocal()
+    }
+}
